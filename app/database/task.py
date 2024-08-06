@@ -20,7 +20,7 @@ def scan():
     cursor.close()
     return output_formatter(results)
 
-def select_by_id(task id):
+def select_by_id(task_id):
     conn = get_db()
     cursor = conn.execute("SELECT * FROM task WHERE id = ?",(task_id,))
     results = cursor.fetchall()
@@ -31,8 +31,8 @@ def select_by_id(task id):
 
 def insert(task_data):
     task_tuple = (
-        task_data_get("name")
-        task_data_get("summary")
+        task_data_get("name"),
+        task_data_get("summary"),
         task_data_get("description")
     )
     statement = """"
